@@ -1,0 +1,140 @@
+@import '../styles/_variables.scss';
+
+.menu {
+  display: none;
+  z-index: 9;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0; //Change
+  bottom: 0; //Change
+  left: 0; //Change
+  right: 0; //Change
+  &__content {
+    max-width: 1300px; //Remove?
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    @include breakpoint(md) {
+      padding: 0 $spacing-lg;
+    }
+  }
+  &__secondary {
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+  &__secondary__layer {
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
+    overflow: hidden;
+  }
+  &__secondary__layer__design {
+    position: absolute; //TODO: This should be absolute
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background-repeat: no-repeat;
+    animation: cameraPan 30s infinite;
+  }
+}
+
+.container {
+  position: relative;
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 200px; //change
+    nav {
+      display: block;
+      ul {
+        padding: 0;
+        margin: 0;
+        li {
+          list-style: none;
+          font-size: 6rem;
+          font-weight: 700;
+          cursor: pointer;
+          height: 135px; //Change
+          overflow: hidden;
+          position: relative;
+          width: 700px; //Change
+          a {
+            position: absolute;
+            color: white;
+            text-decoration: none;
+            &:hover {
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__links__info {
+    color: rgb(255, 255, 255);
+    width: 300px; //Change
+    h3 {
+      font-size: 1.2rem;
+      margin: 8px auto;
+    }
+    p {
+      margin: 0 auto;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.locations {
+  position: absolute;
+  bottom: -80px;
+  color: #fff;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  span {
+    &:first-child {
+      margin-left: 64px;
+    }
+    font-weight: 400;
+
+    cursor: pointer;
+    margin: 0 32px;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      background: black;
+      padding: 8px 24px;
+      border-radius: 4px;
+    }
+  }
+}
+
+@keyframes cameraPan {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 40% 10%;
+  }
+  50% {
+    background-position: 0% 10%;
+  }
+  75% {
+    background-position: 10% 40%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

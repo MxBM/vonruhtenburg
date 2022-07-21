@@ -1,0 +1,42 @@
+@use 'colors';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+$poppins-font: 'Poppins', sans-serif;
+
+$bg: white; //Main content background
+$bg2: black; //Menu overlay background
+$text1: black; //Text when menu isn't open.
+$text2: white; //Text when menu is open.
+
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+
+$header-height: 72px;
+
+$sm: 37.5em;
+$md: 48em;
+$lg: 64em;
+$xl: 75em;
+
+@mixin breakpoint($point) {
+  @if $point == sm {
+    @media (min-width: $sm) {
+      @content;
+    }
+  }
+  @if $point == md {
+    @media (min-width: $md) {
+      @content;
+    }
+  }
+  @if $point == lg {
+    @media (min-width: $lg) {
+      @content;
+    }
+  }
+  @if $point == xl {
+    @media (min-width: $xl) {
+      @content;
+    }
+  }
+}

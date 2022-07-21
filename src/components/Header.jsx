@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Menu from '../components/Menu';
+import styles from './Header.module.scss';
+import Menu from './Menu';
+import { FaAngleDoubleDown } from 'react-icons/fa';
+import { FaAngleDoubleUp } from 'react-icons/fa';
 
-const Header = () => {
+export default function Header() {
   let location = useLocation();
   const [disabled, setDisabled] = useState(false);
   const [menuState, setMenuState] = useState({
@@ -47,24 +50,22 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <div className="container">
-        <div className="wrapper">
-          <div className="inner-header">
-            <div className="logo">
-              <Link to="/">Vonruhtenberg</Link>
-            </div>
-            <div className="menu">
-              <button disabled={disabled} onClick={handleMenu}>
-                Menu
-              </button>
-            </div>
-          </div>
+    <div className={styles.header}>
+      <div className={styles.header__content}>
+        <div className={styles.logo}>
+          <Link to="/">Vonruhtenberg</Link>
         </div>
+        <div className={styles.header__button__container}>
+          <button disabled={disabled} onClick={() => handleMenu()} className={styles.button}>
+            Menu
+          </button>
+        </div>
+        <button className={styles.header__toggler}>
+          {/*TODO: Integrate state into icon.*/}
+          <FaAngleDoubleDown />
+        </button>
       </div>
       <Menu state={menuState}></Menu>
-    </header>
+    </div>
   );
-};
-
-export default Header;
+}
